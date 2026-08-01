@@ -1,6 +1,3 @@
-
-
-
 class Cart_item:
     def __init__(self,model,price):
         self.model = model
@@ -22,6 +19,7 @@ class Cart:
 
     def store_name(self):
         print(f"The store name is {self.store}")
+
 
     def shopping_cart_items(self):
         print(f"There are {len(self.items)} amount of items in the cart and they are; ",*self.items )
@@ -65,9 +63,30 @@ Store = Cart("Amazon",[])
 
 def view_cart():
     
-    print(Store.shopping_cart_items())
+    print(f"\n{Store.shopping_cart_items()}")
 
 
+
+
+def remove_items():
+
+     print(*Store.items)
+
+     while True:
+            item_to_remove = input("\nEnter item to remove:")
+    
+            if len(item_to_remove) < 1:
+                print("Please enter a valid item name!")
+            elif item_to_remove.isdigit():
+                print("The item cannot be a number!")
+            elif item_to_remove not in Store.items:
+                print("Item entered is not in yoru shopping cart!. Try again.")
+            else:
+                Store.items.remove(item_to_remove)
+                print(f"{item_to_remove} has succesfully been removed from your shopping cart!.")
+                view_cart()
+                break
+    
 
 
 
@@ -77,19 +96,6 @@ def view_cart():
 def main():
     flag = True
 
-def get_details():
-
-    while True:
-        model = input("\nEnter Model:")
-
-        if len(model) < 1:
-            print("Please enter a valid item name!")
-        elif model.isdigit():
-            print("The item cannot be a number!")
-        else:
-            break
-
-        #price = input("Ente)r price ($):")
     print("#"*20)
     print("\n## 1. Add Items")
     print("## 2. View Cart")
@@ -101,7 +107,7 @@ def get_details():
 
     while flag:
         try:
-            choice = int(input("Enter a choice from the options above: "))
+            choice = int(input("\nEnter a choice from the options above: "))
         except ValueError:
             print("Your choice Must be a number (1-4) ")
             continue
@@ -115,29 +121,13 @@ def get_details():
         elif choice == 2:
             view_cart()
 
-Store = Cart("Amazon",[])
-
-def main():
-    flag = True
-
-    print("#"*20)
-    print("\n## 1. Add Items")
-    print("## 2. View Cart")
-    print("## 3. Remove Items")
-    print("## 4. View Wallet")
-    print("## 5. Exit Program")
-    print("")
-    print("#"*20)
-
-    while flag:
-        try:
-            choice = int(input("Enter a choice from the options above: "))
-        except ValueError:
-            print("Your choice Must be a number (1-4) ")
-            continue
-
-        if choice not in [1,2,3,4]:
-            print("Invalid choice!.")
+        elif choice == 3:
+            if len(Store.items) == 0:
+                print("\nThere is no items in your cart to remove!.")
+            else:
+                remove_items()
+                continue
+            
         elif choice == 5:
             exit_program()
 
@@ -147,25 +137,6 @@ def main():
       
 
 
-
-        elif choice == 1:
-            get_details()
-
-        else:
-            break
-
-      
-
-
-
-#model = input("Enter Model:")
-#price = input("Enter price ($):")
-
-#brand = Cart_item(model,price)
-
-#store.items.append(brand.model)
-
-#print(store.shopping_cart_items())
 
 
 if __name__ == "__main__":
