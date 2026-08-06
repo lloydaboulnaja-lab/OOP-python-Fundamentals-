@@ -1,7 +1,7 @@
 class Cart_item:
-    def __init__(self,model,price):
+    def __init__(self,model,):
         self.model = model
-        self.price = price
+        price = self.price
     
     def get_price(self):
         return self.price
@@ -80,7 +80,7 @@ def remove_items():
             elif item_to_remove.isdigit():
                 print("The item cannot be a number!")
             elif item_to_remove not in Store.items:
-                print("Item entered is not in yoru shopping cart!. Try again.")
+                print("Item entered is not in your shopping cart!. Try again.")
             else:
                 Store.items.remove(item_to_remove)
                 print(f"{item_to_remove} has succesfully been removed from your shopping cart!.")
@@ -90,8 +90,9 @@ def remove_items():
 
 
 
-
-
+def drink_menu():
+    print("="* 30)
+    print
 
 def main():
     flag = True
@@ -100,8 +101,7 @@ def main():
     print("\n## 1. Add Items")
     print("## 2. View Cart")
     print("## 3. Remove Items")
-    print("## 4. View Wallet")
-    print("## 5. Exit Program")
+    print("## 4. Exit Program")
     print("")
     print("#"*20)
 
@@ -128,15 +128,13 @@ def main():
                 remove_items()
                 continue
             
-        elif choice == 5:
+        elif choice == 4:
             exit_program()
 
         else:
             break
 
       
-
-
 
 
 if __name__ == "__main__":
