@@ -65,9 +65,6 @@ def view_cart():
     
     print(f"\n{Store.shopping_cart_items()}")
 
-
-
-
 def remove_items():
 
      print(*Store.items)
