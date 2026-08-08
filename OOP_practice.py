@@ -3,13 +3,6 @@ class Cart_item:
         self.model = model
         price = self.price
     
-    def get_price(self):
-        return self.price
-    
-    def get_model(self):
-        return self.model
-    
-
 class Cart:
     def __init__(self,store,items):
         self.store = store
@@ -64,6 +57,9 @@ Store = Cart("Amazon",[])
 def view_cart():
     
     print(f"\n{Store.shopping_cart_items()}")
+
+
+
 
 def remove_items():
 
@@ -131,7 +127,7 @@ def main():
         else:
             break
 
-      
+    
 
 
 if __name__ == "__main__":
